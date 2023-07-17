@@ -11,22 +11,29 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
 
+
     <script src = './drive.js'></script>
     <script src = './game.js'></script>
+    <script src = './drive1.js'></script>
 </head>
 <body>
-    <a-scene id = "scene" background = 'color:#9CDCFE'>
+    <a-scene id = "scene" background = 'color:#9CDCFE' game='play' inspector-plugin-recast>
 
         <!--camera-->
-        <a-entity id = 'camera1' movement-controls = 'speed: 0.5' position = '0 1 5' rotation = '0 0 0' drive game = 'play'>
+        <a-entity id = 'camera1' movement-controls = 'speed: 0.5' position = '0 1 5' rotation = '0 0 0' drive camMove>
             <a-entity id = 'look'  look-controls camera position = '-17 0 20' 
-            rotation =' 0 0 0' >
+            rotation =' 0 0 0' camMove>
             
             </a-entity>
-            <a-entity id = 'car1' gltf-model = '#car' position = '-17 -2 15' rotation = '0 180 0' scale = '0.15 0.15 0.15' drive game='play' ></a-entity>
+            <a-entity id = 'car1' gltf-model = '#car' position = '-17 -2 15' rotation = '0 180 0' scale = '0.15 0.15 0.15' car car-controller-left car-controller-right ></a-entity>
         </a-entity>
         
-        
+        <a-entity id = 'timer' position = '-40 25 -7' text = 'font:kelsonsans; align:center; color:black; value:00:00; width:50;'></a-entity>
+        <a-entity id = 'speed' position = '4 25 -7' text = 'font:kelsonsans; width:50; height:10; color:black; value:10'>
+            <a-entity id = 'unit' position = '4 5 -7' text = 'font:kelsonsans; width:50; height:10; color:black; value:km/h'></a-entity>
+        </a-entity>
+
+        <a-entity id = 'over' position = '18 25 -7' text = 'font:kelsonsans; color:black; width:50; height:10; value:keep trying' visible = 'false'></a-entity>
 
         <a-assets>
             <a-asset-item id = 'city' src = './assets/low_poly_city_pack/scene.gltf'></a-asset-item>
